@@ -5,3 +5,5 @@ This example grabs a user's publically available LinkedIn profile and formats it
 **Note: Registered app developers now only have access to a user's Basic Profile data meaning only a subset of the entire profile is exposed (for example only the first position is returned). Only partnered (Paid) developers gain access to the rest of the info.
 
 There are also Twitter and Facebook share buttons thrown in for fun.
+
+You can view a demo [here](https://sorob.net/example_projects/fortnite_resume/fortnite-resume.html).
