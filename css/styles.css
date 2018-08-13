@@ -93,7 +93,10 @@ h1, h2, h3 {
 }
 
 #app {
+    max-width: 1200px;
     margin: 16px;
+    margin-left: auto;
+    margin-right: auto;
     padding: 0;
     border-width: 3px;
     border-style: solid;
@@ -150,7 +153,7 @@ h1, h2, h3 {
 .module-share {
     display: flex;
     justify-content: space-between;
-    margin: 0;
+    margin: auto;
     background-color: #411b75;
 }
 
@@ -278,7 +281,7 @@ h1, h2, h3 {
 #headline {
     display: block;
     font-family: 'FortniteHead', Fallback, sans-serif;
-    font-size: 18pt;
+    font-size: 24pt;
     text-align: center;
     color: white;
 }
