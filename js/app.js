@@ -42,8 +42,13 @@ function displayProfiles(data) {
     let profession = chkUndefined(member.industry);
     $('#profession').html(profession);
 
-    let profile = chkUndefined(member.pictureUrl);
-    $('#profile').attr('src', profile);
+    let profilePic = member.pictureUrl;
+    if (profilePic == undefined) {
+        profilePic = null;
+        // Hide pic container if no pic url
+        $('#profile').hide();
+    }
+    $('#profile').attr('src', profilePic);
 
     let summary = chkUndefined(member.summary);
     $('#summary').html(summary);
