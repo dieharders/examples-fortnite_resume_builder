@@ -11,59 +11,69 @@ function OnLinkedInAuth() {
     console.log('Logged In!');
     getProfile();
 }
+// Check undefined results
+function chkUndefined(result) {
+    if (result == undefined || result == '') {
+        result = '?';
+    }
+    return result;
+}
 // Retrieved Profile info
 function displayProfiles(data) {
-    console.log('Profile info: ' + JSON.stringify(data) );
+    console.log( 'Profile info: ' + JSON.stringify(data) );
     // Display data
     let member = data.values[0];
 
-    let name = member.firstName + ' ' + member.lastName;
+    let firstName = chkUndefined(member.firstName);
+    let lastName = chkUndefined(member.lastName);
+    let name = firstName + ' ' + lastName;
     $('#name').html(name);
 
-    let headline = member.headline;
+    let headline = chkUndefined(member.headline);
     $('#headline').html(headline);
 
-    let city = member.location.name;
-    let country = member.location.country.code;
+    let city = chkUndefined(member.location.name);
+    let country = chkUndefined(member.location.country.code);
     $('#location').html(city + ', ' + country);
 
-    let conns = member.numConnections;
+    let conns = chkUndefined(member.numConnections);
     $('#connections').html(conns);
 
-    let profession = member.industry;
+    let profession = chkUndefined(member.industry);
     $('#profession').html(profession);
 
-    let profile = member.pictureUrl;
+    let profile = chkUndefined(member.pictureUrl);
     $('#profile').attr('src', profile);
 
-    let summary = member.summary;
+    let summary = chkUndefined(member.summary);
     $('#summary').html(summary);
 
     // Job Experience
-    let currPositionCompany = member.positions.values[0].company.name;
+    let currPositionCompany = chkUndefined(member.positions.values[0].company.name);
     $('#positions-company').html(currPositionCompany);
-    let currPositionSumm = member.positions.values[0].summary;
-    let splitted = currPositionSumm.split("\n");
-    let positionTitle = member.positions.values[0].title;
-    var maxLines = splitted.length;
-    var parsedText = '<b>Title</b>: ' + positionTitle + '<br>';
-    for (let i = 0; i < maxLines; i++) {
-        parsedText += splitted[i] + '<br>';
+    let positionTitle = chkUndefined(member.positions.values[0].title);
+    let currPositionSumm = chkUndefined(member.positions.values[0].summary);
+    if (currPositionSumm !== undefined) {
+        let splitted = currPositionSumm.split("\n");
+        var maxLines = splitted.length;
+        var parsedText = '<b>Title</b>: ' + positionTitle + '<br>';
+        for (let i = 0; i < maxLines; i++) {
+            parsedText += splitted[i] + '<br>';
+        }
+    } else {
+        var parsedText = '<b>No Experience Listed</b>';
     }
     $('#positions-summary').html(parsedText);
 
     let positionMonth = member.positions.values[0].startDate.month;
-    let positionYear = member.positions.values[0].startDate.year;
+    let positionYear = chkUndefined(member.positions.values[0].startDate.year);
     var months = [ "January", "February", "March", "April", "May", "June", 
                "July", "August", "September", "October", "November", "December" ];
 
-    var positionMonthName = months[positionMonth];
+    var positionMonthName = chkUndefined(months[positionMonth]);
     $('#positions-date').html(positionMonthName + ' ' + positionYear + ' - Current');
 
-    //let specialties = member.specialties;
-    //$('#specialties').html(specialties);
-
-    // Hide show menus
+    // Hide/show menus
     $('#ProfileMenu').show();
     $('#LoginMenu').hide();
 }
