@@ -1,5 +1,7 @@
 # examples-fortnite_resume_builder
 
+![Preview](https://github.com/dieharders/examples-fortnite_resume_builder/blob/master/images/preview.jpg)
+
 This example grabs a user's publically available LinkedIn profile and formats the info as a resume matching Fortnite's design style. The webpage asks the user to allow the app access to their LinkedIn account and then proceeds to grab the 'Basic Profile' and 'Positions' fields available to developers.
 
 Be sure to replace the LinkedIn API key in the [brackets] with your own key found at the bottom of the html page.
