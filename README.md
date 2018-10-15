@@ -1,4 +1,4 @@
-# examples-fortnite_resume_builder
+# Fortnite Resume Builder
 
 ![Preview](https://github.com/dieharders/examples-fortnite_resume_builder/blob/master/images/preview.jpg)
 
@@ -8,7 +8,7 @@ Be sure to replace the LinkedIn API key in the [brackets] with your own key foun
 
 **Note: I have not included the large font. If you would like to achieve the same look you can find an open source alternative or buy the font, it's called Burbank.
 
-***Note: Registered app developers now only have access to a user's Basic Profile data meaning only a subset of the entire profile is exposed (for example only the first position is returned). Only partnered (Paid) developers gain access to the rest of the info.
+***Note: Registered LinkedIn app developers currently only have access to a user's Basic Profile data meaning only a subset of the entire profile is exposed (for example only the first position is returned). Only partnered (Paid) developers gain access to the rest of the info.
 
 There are also Twitter and Facebook share buttons thrown in for fun.
 
