@@ -1,0 +1,87 @@
+<!DOCTYPE HTML>
+<html lang='en'>
+	<head>
+		<title>FORTNITE Resume Builder</title>
+		<meta name="description" content="Turn your LinkedIn profile into a FORTNITE themed resume!" />
+		<meta name="keywords" content="resume, fortnite, LinkedIn, professional, experience, builder, generator, theme, profile"/>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<link rel="stylesheet" href="css/styles.css">
+		<link rel="icon" type="image/x-icon" href="favicon.ico">
+		<script type="text/javascript" charset="utf-8" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+	</head>
+	<body>
+		<!--URL Forms-->
+		<div id="app">
+			<div class="appName">
+				<div style="display: flex; align-items:center;">
+					<img src="images/icon.png" height="92" width="92" align="left">
+					<h1>FORTNITE RESUME BUILDER</h1>
+				</div>
+			</div>
+			<!--"Create" Form-->
+			<div id="LoginMenu" style="margin: 24px">
+				<p id="login-descr" class="text-block">This page grabs your publically available LinkedIn profile and formats it to match Fortnite's design style.</p>
+				<button id="login" type="button">Create</button>
+			</div>
+
+			<!--Profile Menu-->
+			<div id="ProfileMenu">
+				<!--Top UI: conns, name, edu-->
+				<div class="module-top">
+					<div class="cont-inline">
+						<div id="location">Location</div>
+						<div class="title-conns">Connections</div><div id="connections">0</div>
+					</div>
+					<div class="cont-inline">
+						<!--Pic Frame-->
+						<div id="profileFrame">
+							<div class="cont-profile"><img id="profile" src=""></div>
+						</div>
+					</div>
+					<div class="cont-inline headline">
+						<!--Headline, specialties-->
+						<div id="title-headline">Position</div>
+						<div id="headline"></div>
+					</div>
+				</div>
+
+				<!--Name & position-->
+				<div class="module-name">
+					<div id="name" class="cont-block name">Name</div>
+					<div id="profession" class="cont-block profession">Profession</div>
+				</div>
+
+				<!--Summary-->
+				<div class="module-summary">
+					<div id="summary" class="cont-block summary">Summary</div>
+				</div>
+
+				<!--Positions-->
+				<div class="module-positions">
+					<div id="positions-company" class="cont-block">Company</div>
+					<div style="display: flex;">
+						<img id="positions-image" src="images/skill.png">
+						<div id="positions-summary" class="cont-block">Summary</div>
+						<div id="positions-date" class="cont-block">Start Date</div>
+					</div>
+				</div>
+				<!--Share-->
+				<div class="module-share">
+					<div id="share-twitter" class="cont-block">
+						<button id="btn-share-twitter" type="button" class="btn-share">Twitter</button>
+					</div>
+					<div id="share-title" class="cont-block">SHARE</div>
+					<div id="share-facebook" class="cont-block">
+						<button id="btn-share-facebook" type="button" class="btn-share" alt="Share on Facebook">Facebook</button>
+					</div>
+				</div>
+	
+			</div>
+
+		</div>
+		
+		<script src="js/app.js"></script>
+
+	</body>
+</html>
