@@ -3,7 +3,7 @@ This project uses the LinkedIn v1 API. Since they introduced v2, LinkedIn has re
 
 # Fortnite Resume Builder
 
-![Preview](https://github.com/dieharders/examples-fortnite_resume_builder/blob/master/images/preview.jpg)
+![Preview](https://github.com/dieharders/examples-fortnite_resume_builder/blob/master/preview.jpg)
 
 ## [Try Live Demo](https://example-fortnite-resume.web.app/)
 This example grabs a user's publically available LinkedIn profile and formats the info as a resume matching Fortnite's design style. The webpage asks the user to allow the app access to their LinkedIn account and then proceeds to grab the 'Basic Profile' and 'Positions' fields available to developers.

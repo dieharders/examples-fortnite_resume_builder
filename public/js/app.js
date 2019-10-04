@@ -109,22 +109,21 @@ function getProfile() {
 // Init LinkedIn API
 $.getScript("https://platform.linkedin.com/in.js?async=true&format=json", function success() {
     IN.init({
-        api_key: 'your key',
+        api_key: 'your key here',
         onLoad: "linkedIn_Loaded",
         authorize: true
     });
-    // Login to LinkedIn
-    $( "#login" ).click(function() {
-        if (ln_loaded) {
-            if ( !IN.User.isAuthorized() ) {
-                IN.User.authorize(OnLinkedInAuth);
-            } else {
-                getProfile();
-            }
-        }
-    });
 });
-
+// Login to LinkedIn
+$( "#login" ).click(function() {
+    if (ln_loaded) {
+        if ( !IN.User.isAuthorized() ) {
+            IN.User.authorize(OnLinkedInAuth);
+        } else {
+            getProfile();
+        }
+    }
+});
 // Share to Twitter
 $( "#btn-share-twitter" ).click(function() {
     var shareURL = "http://twitter.com/share?"; //url base
