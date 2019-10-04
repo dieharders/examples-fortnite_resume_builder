@@ -1,3 +1,6 @@
+# Deprecated
+This project uses the LinkedIn v1 API. Since they introduced v2, LinkedIn has restricted access to user data returned to just a subset of what was accessible before. Since this project relied on fetching a user's work history, it no longer makes sense to maintain it moving forward without an Enterprise level subscription to LinkedIn.
+
 # Fortnite Resume Builder
 
 ![Preview](https://github.com/dieharders/examples-fortnite_resume_builder/blob/master/images/preview.jpg)
