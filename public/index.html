@@ -13,6 +13,7 @@
 	<body>
 		<!--URL Forms-->
 		<div id="app">
+			<!-- Header Title -->
 			<div class="appName">
 				<div style="display: flex; align-items:center;">
 					<img src="images/icon.png" height="92" width="92" align="left">
@@ -21,17 +22,20 @@
 			</div>
 			<!--"Create" Form-->
 			<div id="LoginMenu" style="margin: 24px">
-				<p id="login-descr" class="text-block">This page grabs your publically available LinkedIn profile and formats it to match Fortnite's design style.</p>
+				<p id="login-descr" class="text-block">This page grabs your publically available Github profile and formats it to match Fortnite's design style.</p>
 				<button id="login" type="button">Create</button>
+				<input id="username" type="text" name="" placeholder="Enter Github Username" autocomplete="off">
 			</div>
 
-			<!--Profile Menu-->
+			<!--"Profile" Menu-->
 			<div id="ProfileMenu">
 				<!--Top UI: conns, name, edu-->
 				<div class="module-top">
 					<div class="cont-inline">
-						<div id="location">Location</div>
-						<div class="title-conns">Connections</div><div id="connections">0</div>
+						<div id="title-headline">Location</div>
+						<div id="location">Somewhere</div>
+						<div class="title-followers">Followers</div><div id="followers">0</div>
+						<div class="title-followers">Following</div><div id="following">0</div>
 					</div>
 					<div class="cont-inline">
 						<!--Pic Frame-->
@@ -41,15 +45,14 @@
 					</div>
 					<div class="cont-inline headline">
 						<!--Headline, specialties-->
-						<div id="title-headline">Position</div>
-						<div id="headline"></div>
+						<div id="title-headline">Company</div>
+						<div id="headline">Some Company</div>
 					</div>
 				</div>
 
-				<!--Name & position-->
+				<!--Name-->
 				<div class="module-name">
 					<div id="name" class="cont-block name">Name</div>
-					<div id="profession" class="cont-block profession">Profession</div>
 				</div>
 
 				<!--Summary-->
@@ -57,14 +60,10 @@
 					<div id="summary" class="cont-block summary">Summary</div>
 				</div>
 
-				<!--Positions-->
+				<!--Stats-->
 				<div class="module-positions">
-					<div id="positions-company" class="cont-block">Company</div>
-					<div style="display: flex;">
-						<img id="positions-image" src="images/skill.png">
-						<div id="positions-summary" class="cont-block">Summary</div>
-						<div id="positions-date" class="cont-block">Start Date</div>
-					</div>
+					<div class="cont-block stats">Repos <span id="repos">0</span></div>
+					<div class="cont-block stats">Gists <span id="gists">0</span></div>
 				</div>
 				<!--Share-->
 				<div class="module-share">
