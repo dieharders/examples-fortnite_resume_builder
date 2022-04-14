@@ -1,48 +1,40 @@
-// Globals
-var ln_loaded = false;
+// Functional Logic //////////////////////////
 
-// Check LinkedIn Javascript library loaded
-function linkedIn_Loaded() {
-    console.log("LinkedIn API Loaded");
-    ln_loaded = true;
-}
-// Logged In
-function OnLinkedInAuth() {
-    console.log('Logged In!');
-    getProfile();
-}
 // Check undefined results
 function chkUndefined(result) {
-    if (result == undefined || result == '') {
+    if (result !== 0 && (result === undefined || result == '')) {
         result = '?';
     }
     return result;
 }
-// Retrieved Profile info
-function displayProfiles(data) {
-    console.log( 'Profile info: ' + JSON.stringify(data) );
-    // Display data
-    let member = data.values[0];
 
-    let firstName = chkUndefined(member.firstName);
-    let lastName = chkUndefined(member.lastName);
-    let name = firstName + ' ' + lastName;
+// Retrieved Profile info
+const renderProfile = (data) => {
+    console.log(data);
+
+    // Display data
+    const name = chkUndefined(data.name);
     $('#name').html(name);
 
-    let headline = chkUndefined(member.headline);
+    const headline = chkUndefined(data.company);
     $('#headline').html(headline);
 
-    let city = chkUndefined(member.location.name);
-    let country = chkUndefined(member.location.country.code);
-    $('#location').html(city + ', ' + country);
+    const city = chkUndefined(data.location);
+    $('#location').html(city);
 
-    let conns = chkUndefined(member.numConnections);
-    $('#connections').html(conns);
+    const followers = chkUndefined(data.followers);
+    $('#followers').html(followers);
 
-    let profession = chkUndefined(member.industry);
-    $('#profession').html(profession);
+    const following = chkUndefined(data.following);
+    $('#following').html(following);
 
-    let profilePic = member.pictureUrl;
+    const repos = chkUndefined(data.public_repos);
+    $('#repos').html(repos);
+
+    const gists = chkUndefined(data.public_gists);
+    $('#gists').html(gists);
+
+    const profilePic = data.avatar_url;
     if (profilePic == undefined) {
         profilePic = null;
         // Hide pic container if no pic url
@@ -50,80 +42,31 @@ function displayProfiles(data) {
     }
     $('#profile').attr('src', profilePic);
 
-    let summary = chkUndefined(member.summary);
+    const summary = chkUndefined(data.bio);
     $('#summary').html(summary);
 
     // Job Experience
-    let currPositionCompany = chkUndefined(member.positions.values[0].company.name);
-    $('#positions-company').html(currPositionCompany);
-    let positionTitle = chkUndefined(member.positions.values[0].title);
-    let currPositionSumm = chkUndefined(member.positions.values[0].summary);
-    if (currPositionSumm !== undefined) {
-        let splitted = currPositionSumm.split("\n");
-        var maxLines = splitted.length;
-        var parsedText = '<b>Title</b>: ' + positionTitle + '<br>';
-        for (let i = 0; i < maxLines; i++) {
-            parsedText += splitted[i] + '<br>';
-        }
-    } else {
-        var parsedText = '<b>No Experience Listed</b>';
-    }
-    $('#positions-summary').html(parsedText);
-
-    let positionMonth = member.positions.values[0].startDate.month;
-    let positionYear = chkUndefined(member.positions.values[0].startDate.year);
-    var months = [ "January", "February", "March", "April", "May", "June", 
-               "July", "August", "September", "October", "November", "December" ];
-
-    var positionMonthName = chkUndefined(months[positionMonth]);
-    $('#positions-date').html(positionMonthName + ' ' + positionYear + ' - Current');
+    const company = chkUndefined(data.company);
+    $('#company').html(company);
 
     // Hide/show menus
     $('#ProfileMenu').show();
     $('#LoginMenu').hide();
 }
-function getProfile() {
-    if (ln_loaded) {
-        // For other ppl's profiles
-        //var url = '/people/~?format=json';
-        //IN.API.Raw(url).result(displayProfiles);
 
-        IN.API.Profile('me').fields([
-            'first-name', 'last-name',
-            'industry',
-            'picture-url',
-            'specialties',
-            'summary',
-            'headline',
-            'location',
-            'num-connections',
-            'positions',
-            'public-profile-url'
-        ]).result(displayProfiles);
-    }
-}
-///////////////////////////////////
-// Logic //////////////////////////
-///////////////////////////////////
-//
-// Init LinkedIn API
-$.getScript("https://platform.linkedin.com/in.js?async=true&format=json", function success() {
-    IN.init({
-        api_key: 'your key here',
-        onLoad: "linkedIn_Loaded",
-        authorize: true
-    });
-});
-// Login to LinkedIn
-$( "#login" ).click(function() {
-    if (ln_loaded) {
-        if ( !IN.User.isAuthorized() ) {
-            IN.User.authorize(OnLinkedInAuth);
-        } else {
-            getProfile();
-        }
-    }
-});
+const getProfileDetails = () => {
+    const name = document.getElementById('username').value;
+    fetch(`https://api.github.com/users/${name}`)
+    .then(response => response.json()
+    .then(data => renderProfile(data))
+    )
+};
+
+// Interactive Logic //////////////////////////
+
+// Login to Github
+$("#login").click(getProfileDetails);
+
 // Share to Twitter
 $( "#btn-share-twitter" ).click(function() {
     var shareURL = "http://twitter.com/share?"; //url base
@@ -136,6 +79,7 @@ $( "#btn-share-twitter" ).click(function() {
     for(var prop in params) shareURL += '&' + prop + '=' + encodeURIComponent(params[prop]);
     window.open(shareURL, '', 'left=0,top=0,width=550,height=450,personalbar=0,toolbar=0,scrollbars=0,resizable=0');
 });
+
 // Share to Facebook
 $( "#btn-share-facebook" ).click(function() {
     var url = 'https://sorob.net/example_projects/fortnite_resume/fortnite-resume.html';
