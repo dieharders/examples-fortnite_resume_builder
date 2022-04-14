@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'FortniteHead';
-    src: url('Fortnite font.otf');
+    src: url('Fortnite-font.otf');
 }
 @font-face {
     font-family: 'FortniteBody';
@@ -307,8 +307,8 @@ h1, h2, h3 {
     font-size: 48pt;
     color: white;
 }
-.title-followers {
-    display: inline-block;
+.title-connections {
+    display: block;
     width: auto;
     margin-right: 8px;
     font-family: 'FortniteHead', Fallback, sans-serif;
